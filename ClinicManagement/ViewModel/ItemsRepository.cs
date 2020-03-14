@@ -19,8 +19,8 @@ namespace ClinicManagement.ViewModel.Entities
     {
     
 
-        public  static ObservableCollection<Patient> PatientsList = new ObservableCollection<Patient>();
-        public static ObservableCollection<Visit> VisitsList = new ObservableCollection<Visit>();
+        public  static ObservableCollection<PatientItem> PatientsList = new ObservableCollection<PatientItem>();
+        public static ObservableCollection<VisitItem> VisitsList = new ObservableCollection<VisitItem>();
 
     }
 }

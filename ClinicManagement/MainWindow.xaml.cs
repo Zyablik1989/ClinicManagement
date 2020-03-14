@@ -31,7 +31,7 @@ namespace ClinicManagement
 
         private void PatientAdd(object sender, RoutedEventArgs e)
         {
-           ItemsRepository.PatientsList.Add(new Patient()
+           ItemsRepository.PatientsList.Add(new PatientItem()
             {
                 Address = "Los Angeles",
                 DateOfBirth = DateTime.Now.ToString("U"),
@@ -54,7 +54,7 @@ namespace ClinicManagement
 
         private void VisitAdd(object sender, RoutedEventArgs e)
         {
-                ItemsRepository.VisitsList.Add(new Visit()
+                ItemsRepository.VisitsList.Add(new VisitItem()
                 {
                     Id = 1,
                     Date = DateTime.Now.ToString("U"),
@@ -118,6 +118,11 @@ namespace ClinicManagement
             btVisitAdd.IsEnabled = true;
             btVisitEdit.IsEnabled = true;
             btVisitDelete.IsEnabled = true;
+        }
+
+        private void UpdateLists()
+        {
+
         }
     }
 }

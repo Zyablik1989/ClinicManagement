@@ -14,6 +14,8 @@ namespace ClinicManagement.DataLayer.Model
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Visit> Visits{ get; set; }
 
+        public static string currentConnection = string.Empty;
+
         public Clinic(string connString)
         {
             Database.Connection.ConnectionString = connString;
@@ -95,6 +97,7 @@ namespace ClinicManagement.DataLayer.Model
                 
                 }
 
+
                 return null;
             }
             catch (Exception e)
@@ -105,5 +108,7 @@ namespace ClinicManagement.DataLayer.Model
 
             
         }
+
+        
     }
 }

@@ -64,13 +64,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataLayer\DataManipulations.cs" />
     <Compile Include="DataLayer\Model\Entities\Diagnoses.cs" />
     <Compile Include="DataLayer\Model\Entities\Patient.cs" />
     <Compile Include="DataLayer\Model\Entities\Visit.cs" />
     <Compile Include="DataLayer\Model\ClinicDBContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="ViewModel\Entities\Patient.cs" />
-    <Compile Include="ViewModel\Entities\Visit.cs" />
+    <Compile Include="ViewModel\Entities\PatientItem.cs" />
+    <Compile Include="ViewModel\Entities\VisitItem.cs" />
     <Compile Include="ViewModel\ItemsRepository.cs" />
     <Compile Include="Views\GridWithData.xaml.cs">
       <DependentUpon>GridWithData.xaml</DependentUpon>

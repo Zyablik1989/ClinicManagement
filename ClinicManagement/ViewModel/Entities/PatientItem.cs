@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClinicManagement.ViewModel.Entities
 {
-   public class Patient
+   public class PatientItem
     {
         public int Id { get; set; }
         public string Name { get; set; }
