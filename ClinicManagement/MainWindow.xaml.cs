@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClinicManagement.DataLayer;
+using ClinicManagement.ViewModel.Entities;
 using ClinicManagement.Views;
-using ClinicTest.Model.Entities;
 
 namespace ClinicManagement
 {
@@ -32,11 +31,11 @@ namespace ClinicManagement
 
         private void PatientAdd(object sender, RoutedEventArgs e)
         {
-            DataLayer.ItemsRepository.PatientsList.Add(new Patient()
+           ItemsRepository.PatientsList.Add(new Patient()
             {
                 Address = "Los Angeles",
                 DateOfBirth = DateTime.Now.ToString("U"),
-                Sex = "♂",
+                Gender = "♂",
                 Id = 1,
                 Name = "John Connor",
                 Phone = "05423"
@@ -55,7 +54,7 @@ namespace ClinicManagement
 
         private void VisitAdd(object sender, RoutedEventArgs e)
         {
-                DataLayer.ItemsRepository.VisitsList.Add(new Visit()
+                ItemsRepository.VisitsList.Add(new Visit()
                 {
                     Id = 1,
                     Date = DateTime.Now.ToString("U"),
@@ -81,7 +80,9 @@ namespace ClinicManagement
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            string conn = tbConnectionString.Text;
+            DataLayer.Model.Clinic.CreateDb(conn);
+            
         }
     }
 }

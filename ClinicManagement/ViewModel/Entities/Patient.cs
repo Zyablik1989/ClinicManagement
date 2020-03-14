@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicTest.Model.Entities
+namespace ClinicManagement.ViewModel.Entities
 {
    public class Patient
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Sex { get; set; }
+        public string Gender { get; set; }
         public string DateOfBirth { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }

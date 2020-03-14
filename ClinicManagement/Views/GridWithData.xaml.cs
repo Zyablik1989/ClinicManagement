@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClinicManagement.DataLayer;
+using ClinicManagement.ViewModel.Entities;
 
 namespace ClinicManagement.Views
 {
@@ -36,10 +36,10 @@ namespace ClinicManagement.Views
             switch (variant)
             {
                 case ListItemsVariants.patients:
-            ListWithData.ItemsSource = DataLayer.ItemsRepository.PatientsList;
+            ListWithData.ItemsSource = ItemsRepository.PatientsList;
                     break;
                 case ListItemsVariants.visits:
-                    ListWithData.ItemsSource = DataLayer.ItemsRepository.VisitsList;
+                    ListWithData.ItemsSource = ItemsRepository.VisitsList;
                     break;
 
             }

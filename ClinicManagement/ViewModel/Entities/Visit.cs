@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicTest.Model.Entities
+namespace ClinicManagement.ViewModel.Entities
 {
    public class Visit
     {
-       public enum Diagnoses
-        {
-            plantarFasciosis
-            , pyelonephritis
-        }
 
         public int Id { get; set; }
         public int ClientId { get; set; }
