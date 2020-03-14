@@ -5,8 +5,187 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicManagement"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"  MinHeight="600" MinWidth="800" Height="600" Width="800">
     <Grid>
-        
+        <Grid  VerticalAlignment="Top" Height="20" Background="#FFE23131">
+            <Rectangle  d:IsLocked="True" >
+
+                <Rectangle.Fill>
+                    <RadialGradientBrush GradientOrigin="0.5,0.3">
+                        <RadialGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="2" ScaleY="2"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </RadialGradientBrush.RelativeTransform>
+                        <GradientStop Color="LightGray"/>
+                        <GradientStop Color="LightGray" Offset="1"/>
+                        <GradientStop Color="Gray" Offset="0.5"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+
+            </Rectangle>
+            <Button Content="Connect" HorizontalAlignment="Left" Margin="369,0,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <TextBox Name="tbConnectionString" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="369"/>
+            <TextBlock Name="tbConnectionStatus"  HorizontalAlignment="Left" Margin="449,2,0,0" TextWrapping="Wrap" Text="Put Connection string to 'Clinic'-base here and press Connect'" VerticalAlignment="Top" Width="343"/>
+
+        </Grid>
+        <Grid  Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <!--<RowDefinition  />-->
+                <RowDefinition Height="*" />
+                <RowDefinition Height="16" >
+
+                </RowDefinition>
+                <RowDefinition Height="*" />
+                <!--<RowDefinition Height="*" />-->
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="37*"/>
+                    <ColumnDefinition Width="755*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+
+
+                <Grid Grid.Row="0" Height="Auto" Grid.ColumnSpan="2" >
+                    <Rectangle  d:IsLocked="True" >
+
+                        <Rectangle.Fill>
+                            <RadialGradientBrush GradientOrigin="0.5,0.3">
+                                <RadialGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="2" ScaleY="2"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </RadialGradientBrush.RelativeTransform>
+                                <GradientStop Color="LightGray"/>
+                                <GradientStop Color="CornflowerBlue" Offset="1"/>
+                                <GradientStop Color="LightBlue" Offset="0.5"/>
+                            </RadialGradientBrush>
+                        </Rectangle.Fill>
+
+                    </Rectangle>
+                    <StackPanel Orientation="Horizontal"  >
+                        <Button Name="btPatientAdd"   Content="Add Patient" Margin="5,0,0,0"  Click="PatientAdd"></Button>
+                        <Button Name="btPatientEdit"  Content="Edit Patient" Margin="5,0,0,0" Click="PatientEdit"></Button>
+                        <Button Name="btPatientDelete" Content="Delete Patient" Margin="5,0,0,0" Click="PatientDelete"></Button>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Background="Transparent" Grid.ColumnSpan="2"    >
+                    <Border Background="LightGray" Height="Auto" BorderBrush="DarkGray"  
+
+                           BorderThickness="0" ClipToBounds="True" Grid.ColumnSpan="1" >
+                        <Border Background="Transparent" BorderBrush="Black" 
+
+                               BorderThickness="5,12,0,0" Margin="-5,-11,0,0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1.5" BlurRadius="9"/>
+                            </Border.Effect>
+                        </Border>
+                    </Border>
+
+                    <Grid Height="Auto" Name="GridContainerPatients" Background="Transparent"/>
+                </Grid>
+            </Grid>
+
+            <Rectangle Grid.Row="1"  d:IsLocked="True" >
+
+                <Rectangle.Fill>
+                    <RadialGradientBrush GradientOrigin="0.5,0.3">
+                        <RadialGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="2" ScaleY="2"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </RadialGradientBrush.RelativeTransform>
+                        <GradientStop Color="LightGray"/>
+                        <GradientStop Color="CornflowerBlue" Offset="1"/>
+                        <GradientStop Color="LightSeaGreen" Offset="0.5"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+
+            </Rectangle>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Row="1">---- ↑ Patients ↓ Visits ----</TextBlock>
+            <GridSplitter Grid.Row="1"  Height="10" ShowsPreview="False" HorizontalAlignment="Stretch" Background="Transparent" />
+
+
+            <Border Grid.Row="2" Background="LightGray" BorderBrush="DarkGray"  
+
+                    BorderThickness="0" ClipToBounds="True" Grid.ColumnSpan="1" Margin="0,0,0,0" >
+                <Border Background="Transparent" BorderBrush="Black" 
+
+                        BorderThickness="5,12,0,0" Margin="-5,-11,0,0">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="1.5" BlurRadius="9"/>
+                    </Border.Effect>
+                </Border>
+            </Border>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+
+
+                <Grid Grid.Row="0" Height="Auto" >
+                    <Rectangle  d:IsLocked="True" >
+
+                        <Rectangle.Fill>
+                            <RadialGradientBrush GradientOrigin="0.5,0.3">
+                                <RadialGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="2" ScaleY="2"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </RadialGradientBrush.RelativeTransform>
+                                <GradientStop Color="LightGray"/>
+                                <GradientStop Color="CornflowerBlue" Offset="1"/>
+                                <GradientStop Color="LightBlue" Offset="0.5"/>
+                            </RadialGradientBrush>
+                        </Rectangle.Fill>
+
+                    </Rectangle>
+                    <StackPanel Orientation="Horizontal"  >
+                        <Button Name="btVisitAdd"   Content="Add Visit" Margin="5,0,0,0"     Click="VisitAdd"/>
+                        <Button Name="btVisitEdit"  Content="Edit Visit" Margin="5,0,0,0"    Click="VisitEdit"></Button>
+                        <Button Name="btVisitDelete" Content="Delete Visit" Margin="5,0,0,0" Click="VisitDelete"></Button>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Background="Transparent"    >
+                    <Border Background="LightGray" Height="Auto" BorderBrush="DarkGray"  
+
+                           BorderThickness="0" ClipToBounds="True" Grid.ColumnSpan="1" >
+                        <Border Background="Transparent" BorderBrush="Black" 
+
+                               BorderThickness="5,12,0,0" Margin="-5,-11,0,0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1.5" BlurRadius="9"/>
+                            </Border.Effect>
+                        </Border>
+                    </Border>
+
+                    <Grid Height="Auto" Name="GridContainerVisits" Background="Transparent"/>
+                </Grid>
+            </Grid>
+
+        </Grid>
     </Grid>
 </Window>
