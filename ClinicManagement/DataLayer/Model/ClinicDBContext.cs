@@ -16,91 +16,94 @@ namespace ClinicManagement.DataLayer.Model
 
         public Clinic(string connString)
         {
-            
             Database.Connection.ConnectionString = connString;
             Database.SetInitializer(new DropCreateDatabaseAlways<Clinic>());
         }
 
 
-       public static bool CreateDb(string conn)
+       public static Exception CreateDb(string conn)
         {
-            using (SqlConnection connection = new SqlConnection(conn))
+
+            try
             {
-                try
+                using (Clinic db = new Clinic(conn))
                 {
-                    connection.Open();
-                    
+                    db.Database.Initialize(true);
                 }
-                catch (SqlException)
-                {
-                    return false;
-                }
-            }
 
-
-            using (Clinic db = new Clinic(conn))
-            {
-                var p1 = new Patient()
+                using (Clinic db = new Clinic(conn))
                 {
-                    Address = "Los Angeles",
-                    DateOfBirth = DateTime.Now,
-                    MaleGender = true,
-                    Name = "John Connor",
-                    Phone = "+05423"
-                };
+                    var p1 = new Patient()
+                    {
+                        Address = "Los Angeles",
+                        DateOfBirth = DateTime.Now,
+                        MaleGender = true,
+                        Name = "John Connor",
+                        Phone = "+05423"
+                    };
 
-                var p2 = new Patient()
-                {
-                    Address = "Russia",
-                    DateOfBirth = DateTime.MaxValue,
-                    MaleGender = false,
-                    Name = "Joahnna",
-                    Phone = "+7777777"
-                };
+                    var p2 = new Patient()
+                    {
+                        Address = "Russia",
+                        DateOfBirth = DateTime.Now,
+                        MaleGender = false,
+                        Name = "Joahnna",
+                        Phone = "+7777777"
+                    };
 
-                var p3 = new Patient()
-                {
-                    Address = "Malaysia",
-                    DateOfBirth = DateTime.MinValue,
-                    MaleGender = true,
-                    Name = "Vernon"
+                    var p3 = new Patient()
+                    {
+                        Address = "Malaysia",
+                        DateOfBirth = DateTime.Now,
+                        MaleGender = true,
+                        Name = "Vernon"
                     
-                };
+                    };
 
-                var v1 = new Visit()
-                {
-                    Date = DateTime.Now,
-                    Diagnosis = Diagnoses.diagnoses[0],
-                    patient = p1,
-                    Initial = true
-                };
+                    var v1 = new Visit()
+                    {
+                        Date = DateTime.Now,
+                        Diagnosis = Diagnoses.diagnoses[0],
+                        patient = p1,
+                        Initial = true
+                    };
 
-                var v2 = new Visit()
-                {
-                    Date = DateTime.Now,
-                    Diagnosis = Diagnoses.diagnoses[0],
-                    patient = p1,
-                    Initial = false
-                };
+                    var v2 = new Visit()
+                    {
+                        Date = DateTime.Now,
+                        Diagnosis = Diagnoses.diagnoses[0],
+                        patient = p1,
+                        Initial = false
+                    };
 
-                var v3 = new Visit()
-                {
-                    Date = DateTime.Now,
-                    Diagnosis = Diagnoses.diagnoses[1],
-                    patient = p2,
-                    Initial = false
-                };
+                    var v3 = new Visit()
+                    {
+                        Date = DateTime.Now,
+                        Diagnosis = Diagnoses.diagnoses[1],
+                        patient = p2,
+                        Initial = false
+                    };
 
-                p1.visits.AddRange(new List<Visit>(){ v1, v2 });
-                p2.visits.Add(v1);
+                    p1.visits.AddRange(new List<Visit>(){ v1, v2 });
+                    p2.visits.Add(v1);
 
+                    db.Patients.AddRange(new List<Patient>(){ p1, p2, p3 });
+                    db.Visits.AddRange(new List<Visit>(){ v1, v2 });
 
-                db.SaveChanges();
+                    db.SaveChanges();
 
                 
+                }
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                var a = e.Message;
+                return e;
             }
 
-            return true;
+            
         }
     }
 }

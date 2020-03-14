@@ -27,10 +27,11 @@
                 </Rectangle.Fill>
 
             </Rectangle>
-            <Button Content="Connect" HorizontalAlignment="Left" Margin="369,0,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Button Content="Connect" Name="btConnect" HorizontalAlignment="Left" Margin="369,0,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             <TextBox Name="tbConnectionString" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" 
                      Text="Server=Super\sql;Database=Clinic;Trusted_Connection=True;" VerticalAlignment="Top" Width="369"/>
-            <TextBlock Name="tbConnectionStatus"  HorizontalAlignment="Left" Margin="449,2,0,0" TextWrapping="Wrap" Text="Put Connection string to SQL server here and press Connect'" VerticalAlignment="Top" Width="343"/>
+            <TextBlock Name="tbConnectionStatus"  HorizontalAlignment="Left" Margin="449,2,0,0" TextWrapping="Wrap" 
+                       Text="Type connection string to SQL base and press 'Connect'" VerticalAlignment="Top" Width="343"/>
 
         </Grid>
         <Grid  Margin="0,20,0,0">
@@ -82,9 +83,9 @@
 
                     </Rectangle>
                     <StackPanel Orientation="Horizontal"  >
-                        <Button Name="btPatientAdd"   Content="Add Patient" Margin="5,0,0,0"  Click="PatientAdd"></Button>
-                        <Button Name="btPatientEdit"  Content="Edit Patient" Margin="5,0,0,0" Click="PatientEdit"></Button>
-                        <Button Name="btPatientDelete" Content="Delete Patient" Margin="5,0,0,0" Click="PatientDelete"></Button>
+                        <Button IsEnabled="False" Name="btPatientAdd"   Content="Add Patient" Margin="5,0,0,0"  Click="PatientAdd"></Button>
+                        <Button IsEnabled="False" Name="btPatientEdit"  Content="Edit Patient" Margin="5,0,0,0" Click="PatientEdit"></Button>
+                        <Button IsEnabled="False" Name="btPatientDelete" Content="Delete Patient" Margin="5,0,0,0" Click="PatientDelete"></Button>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1" Background="Transparent" Grid.ColumnSpan="2"    >
@@ -169,9 +170,9 @@
 
                     </Rectangle>
                     <StackPanel Orientation="Horizontal"  >
-                        <Button Name="btVisitAdd"   Content="Add Visit" Margin="5,0,0,0"     Click="VisitAdd"/>
-                        <Button Name="btVisitEdit"  Content="Edit Visit" Margin="5,0,0,0"    Click="VisitEdit"></Button>
-                        <Button Name="btVisitDelete" Content="Delete Visit" Margin="5,0,0,0" Click="VisitDelete"></Button>
+                        <Button IsEnabled="False" Name="btVisitAdd"   Content="Add Visit" Margin="5,0,0,0"     Click="VisitAdd"/>
+                        <Button IsEnabled="False" Name="btVisitEdit"  Content="Edit Visit" Margin="5,0,0,0"    Click="VisitEdit"></Button>
+                        <Button IsEnabled="False" Name="btVisitDelete" Content="Delete Visit" Margin="5,0,0,0" Click="VisitDelete"></Button>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1" Background="Transparent"    >

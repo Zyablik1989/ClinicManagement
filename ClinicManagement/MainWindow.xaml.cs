@@ -80,9 +80,44 @@ namespace ClinicManagement
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            btConnect.IsEnabled = false;
             string conn = tbConnectionString.Text;
-            DataLayer.Model.Clinic.CreateDb(conn);
-            
+
+            var result = DataLayer.Model.Clinic.CreateDb(conn);
+            if (result != null)
+            {
+               if( (result as Exception).Message.Contains("in use"))
+                {
+                    System.Windows.MessageBox.Show(
+                        "This base is already in use"
+                        ,
+                        "Error"
+                        , MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+                if ((result as Exception).Message.Contains("error: 26"))
+                {
+                    System.Windows.MessageBox.Show(
+                        "Cannot find this Server"
+                        ,
+                        "Error"
+                        , MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+
+                tbConnectionStatus.Text = "An error occured";
+                btConnect.IsEnabled = true;
+            }
+
+            tbConnectionStatus.Text = "Connected";
+
+            btPatientAdd.IsEnabled = true;
+            btPatientEdit.IsEnabled = true;
+            btPatientDelete.IsEnabled = true;
+
+            btVisitAdd.IsEnabled = true;
+            btVisitEdit.IsEnabled = true;
+            btVisitDelete.IsEnabled = true;
         }
     }
 }
