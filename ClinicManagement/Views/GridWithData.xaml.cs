@@ -41,12 +41,42 @@ namespace ClinicManagement.Views
                 case ListItemsVariants.visits:
                     ListWithData.ItemsSource = ItemsRepository.VisitsList;
                     break;
-
             }
+        }
+
+        public void DeletePatient()
+        {
+            var patient = ListWithData.SelectedItem;
+            if (patient != null)
             {
-                    
+                ItemsRepository.DeletePatient(patient as PatientItem);
             }
+        }
 
+        public void DeleteVisit()
+        {
+            var visit = ListWithData.SelectedItem;
+            if (visit != null)
+            {
+                ItemsRepository.DeleteVisit(visit as VisitItem);
+            }
+        }
+
+        public void AddPatient()
+        {
+            UpdatePatient patientEdit = new UpdatePatient();
+            patientEdit.ShowDialog();
+        }
+
+        public void UpdatePatient()
+        {
+
+            var patient = ListWithData.SelectedItem;
+            if (patient != null)
+            {
+                UpdatePatient patientEdit = new UpdatePatient(patient as PatientItem);
+                patientEdit.ShowDialog();
+            }
         }
     }
 }

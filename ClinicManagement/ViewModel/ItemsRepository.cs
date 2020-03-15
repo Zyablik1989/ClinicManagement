@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClinicManagement.DataLayer;
 using ClinicManagement.DataLayer.Model;
+using ClinicManagement.DataLayer.Model.Entities;
 using ClinicManagement.ViewModel.Entities;
 
 namespace ClinicManagement.ViewModel.Entities
@@ -18,9 +19,10 @@ namespace ClinicManagement.ViewModel.Entities
         visits
     }
 
-
     public class ItemsRepository
     {
+        public static ObservableCollection<PatientItem> PatientsList = new ObservableCollection<PatientItem>();
+        public static ObservableCollection<VisitItem> VisitsList = new ObservableCollection<VisitItem>();
 
         public static void UpdateLists()
         {
@@ -30,11 +32,10 @@ namespace ClinicManagement.ViewModel.Entities
 
         public static void UpdatePatients()
         {
-
             var patientsData = DataManipulations.GetPatients();
+                PatientsList.Clear();
             if (patientsData.Count > 0)
             {
-                PatientsList.Clear();
                 foreach (var patient in patientsData)
                 {
                     PatientsList.Add(new PatientItem()
@@ -57,9 +58,9 @@ namespace ClinicManagement.ViewModel.Entities
         public static void UpdateVisits()
         {
             var visitsData = DataManipulations.GetVisits();
+                VisitsList.Clear();
             if (visitsData.Count > 0)
             {
-                VisitsList.Clear();
                 foreach (var visit in visitsData)
                 {
                     VisitsList.Add(new VisitItem()
@@ -70,18 +71,35 @@ namespace ClinicManagement.ViewModel.Entities
                             Diagnosis = visit.Diagnosis,
                             Initial = visit.Initial,
                             Name = visit.patient.Name
-
                     }
-
                     );
                 }
             }
         }
 
-  
+        public static void DeletePatient(PatientItem patient)
+        {
+            if (DataManipulations.DeletePatient(patient.Id))
+            {
+             UpdateLists();
+            }
+        }
 
-        public static ObservableCollection<PatientItem> PatientsList = new ObservableCollection<PatientItem>();
-        public static ObservableCollection<VisitItem> VisitsList = new ObservableCollection<VisitItem>();
+        public static void DeleteVisit(VisitItem visitItem)
+        {
+            if (DataManipulations.DeleteVisit(visitItem.Id))
+            {
+               UpdateLists();
+            }
+        }
 
+
+        public static void PatientAddOrUpdate(Patient patient)
+        {
+            if (DataManipulations.PatientAddOrUpdate(patient))
+            {
+                UpdateLists();
+            }
+        }
     }
 }

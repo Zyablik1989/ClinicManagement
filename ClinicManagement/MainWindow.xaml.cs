@@ -21,50 +21,33 @@ namespace ClinicManagement
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static GridWithData PatientsGrid = new GridWithData(ListItemsVariants.patients);
+        private static GridWithData VisitsGrid = new GridWithData(ListItemsVariants.visits);
         public MainWindow()
         {
             InitializeComponent();
-            GridContainerPatients.Children.Add(new GridWithData(ListItemsVariants.patients));
-            GridContainerVisits.Children.Add(new GridWithData(ListItemsVariants.visits));
+            GridContainerPatients.Children.Add(PatientsGrid);
+            GridContainerVisits.Children.Add(VisitsGrid);
         } 
 
         private void PatientAdd(object sender, RoutedEventArgs e)
         {
-           ItemsRepository.PatientsList.Add(new PatientItem()
-            {
-                Address = "Los Angeles",
-                DateOfBirth = DateTime.Now.ToString("U"),
-                Gender = "♂",
-                Id = 1,
-                Name = "John Connor",
-                Phone = "05423"
-            });
+            PatientsGrid.AddPatient();
         }
 
         private void PatientEdit(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            PatientsGrid.UpdatePatient();
         }
 
         private void PatientDelete(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            PatientsGrid.DeletePatient();
         }
 
         private void VisitAdd(object sender, RoutedEventArgs e)
         {
-                ItemsRepository.VisitsList.Add(new VisitItem()
-                {
-                    Id = 1,
-                    Date = DateTime.Now.ToString("U"),
-                    Diagnosis = "Plantar Fasciosis",
-                    ClientId = 1,
-                    Initial = true,
-                    Name = "John"
-
-                }
-
-                );
+            throw new NotImplementedException();
         }
 
         private void VisitEdit(object sender, RoutedEventArgs e)
@@ -74,10 +57,10 @@ namespace ClinicManagement
 
         private void VisitDelete(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            VisitsGrid.DeleteVisit();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Connect(object sender, RoutedEventArgs e)
         {
             btConnect.IsEnabled = false;
             string conn = tbConnectionString.Text;

@@ -27,7 +27,7 @@
                 </Rectangle.Fill>
 
             </Rectangle>
-            <Button Content="Connect" Name="btConnect" HorizontalAlignment="Left" Margin="369,0,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Button Content="Connect" Name="btConnect" HorizontalAlignment="Left" Margin="369,0,0,0" VerticalAlignment="Top" Width="75" Click="Connect"/>
             <TextBox Name="tbConnectionString" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" 
                      Text="Server=Super\sql;Database=Clinic;Trusted_Connection=True;" VerticalAlignment="Top" Width="369"/>
             <TextBlock Name="tbConnectionStatus"  HorizontalAlignment="Left" Margin="449,2,0,0" TextWrapping="Wrap" 
@@ -145,9 +145,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
-
-
 
                 <Grid Grid.Row="0" Height="Auto" >
                     <Rectangle  d:IsLocked="True" >
