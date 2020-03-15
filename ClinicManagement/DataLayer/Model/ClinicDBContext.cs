@@ -14,16 +14,28 @@ namespace ClinicManagement.DataLayer.Model
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Visit> Visits{ get; set; }
 
+        /// <summary>
+        /// Connection which used to initialization
+        /// </summary>
         public static string currentConnection = string.Empty;
+        /// <summary>
+        /// Is db initialized and ready to work with
+        /// </summary>
         public static bool IsConnected = false;
 
         public Clinic(string connString)
         {
+            
             Database.Connection.ConnectionString = connString;
+            //Drops and Create new DB with basic scheme
             Database.SetInitializer(new DropCreateDatabaseAlways<Clinic>());
         }
 
-
+        /// <summary>
+        /// Populates DB with test data
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <returns></returns>
        public static Exception CreateDb(string conn)
         {
             try
@@ -86,15 +98,10 @@ namespace ClinicManagement.DataLayer.Model
                         Initial = true
                     };
 
-                    //p1.visits.AddRange(new List<Visit>(){ v1, v2 });
-                    //p2.visits.Add(v1);
-
                     db.Patients.AddRange(new List<Patient>(){ p1, p2, p3 });
                     db.Visits.AddRange(new List<Visit>(){ v1, v2, v3 });
 
                     db.SaveChanges();
-
-                
                 }
 
                 currentConnection = conn;

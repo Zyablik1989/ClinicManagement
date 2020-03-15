@@ -138,9 +138,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TextTemplate.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="cross.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

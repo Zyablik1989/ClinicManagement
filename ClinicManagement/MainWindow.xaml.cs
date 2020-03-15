@@ -21,6 +21,7 @@ namespace ClinicManagement
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Two Usercontrols that contains entities of Patients and Visits
         private static GridWithData PatientsGrid = new GridWithData(ListItemsVariants.patients);
         private static GridWithData VisitsGrid = new GridWithData(ListItemsVariants.visits);
         public MainWindow()
@@ -62,6 +63,11 @@ namespace ClinicManagement
             VisitsGrid.DeleteVisit();
         }
 
+        /// <summary>
+        /// Connects to given server, creates test database and fills db with test entries
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Connect(object sender, RoutedEventArgs e)
         {
             btConnect.IsEnabled = false;

@@ -16,7 +16,10 @@ namespace ClinicManagement.DataLayer
     public class DataManipulations
     {
 
-
+        /// <summary>
+        /// Returns collection of Patient model objects
+        /// </summary>
+        /// <returns></returns>
         public static  ObservableCollection<Patient> GetPatients()
         {
             if (Clinic.IsConnected)
@@ -30,6 +33,10 @@ namespace ClinicManagement.DataLayer
             return new ObservableCollection<Patient>();
         }
 
+        /// <summary>
+        /// Returns collection of Visits model objects
+        /// </summary>
+        /// <returns></returns>
         public static ObservableCollection<Visit> GetVisits()
         {
             if (Clinic.IsConnected)
@@ -114,12 +121,14 @@ namespace ClinicManagement.DataLayer
                     try
                     {
                         db.Patients.Load();
+                        //Patient does not present. Creating
                         if (patient.Id == -1)
                         {
                             
                             db.Patients.Add(patient);
                             db.SaveChanges();
                         }
+                        //Editing Patient
                         else
                         {
                             var p = db.Patients.FirstOrDefault(x => x.Id == patient.Id);
@@ -157,6 +166,7 @@ namespace ClinicManagement.DataLayer
                     {
                         db.Patients.Load();
                         db.Visits.Load();
+                        //Visit does not present. Creating
                         if (visit.Id == -1 && visit.patient != null)
                         {
                             var p = db.Patients.FirstOrDefault(x => x.Id == visit.patient.Id);
@@ -165,6 +175,7 @@ namespace ClinicManagement.DataLayer
                             db.Visits.Add(visit);
                             db.SaveChanges();
                         }
+                        //Editing Visit
                         else
                         {
                             var v = db.Visits.FirstOrDefault(x => x.Id == visit.Id);

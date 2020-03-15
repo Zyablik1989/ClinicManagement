@@ -21,6 +21,7 @@ namespace ClinicManagement.ViewModel.Entities
 
     public class ItemsRepository
     {
+        //Two observable collections that feeds corresponding grids
         public static ObservableCollection<PatientItem> PatientsList = new ObservableCollection<PatientItem>();
         public static ObservableCollection<VisitItem> VisitsList = new ObservableCollection<VisitItem>();
 
@@ -30,6 +31,9 @@ namespace ClinicManagement.ViewModel.Entities
             UpdateVisits();
         }
 
+        /// <summary>
+        /// Converts Patient model objects to Patient view objects
+        /// </summary>
         public static void UpdatePatients()
         {
             var patientsData = DataManipulations.GetPatients();
@@ -55,6 +59,9 @@ namespace ClinicManagement.ViewModel.Entities
             }
         }
 
+        /// <summary>
+        /// Converts Visit model objects to Visit view objects
+        /// </summary>
         public static void UpdateVisits()
         {
             var visitsData = DataManipulations.GetVisits();

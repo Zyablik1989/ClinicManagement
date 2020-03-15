@@ -31,6 +31,9 @@ namespace ClinicManagement.Views
             
         }
 
+        /// <summary>
+        /// Populating lists with corresponding data
+        /// </summary>
         private void FillTheListView()
         {
             switch (variant)
