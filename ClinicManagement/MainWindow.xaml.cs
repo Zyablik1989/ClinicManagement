@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,6 +110,8 @@ namespace ClinicManagement
 
             tbConnectionStatus.Text = "Connected";
 
+            ItemsRepository.UpdateLists();
+
             btPatientAdd.IsEnabled = true;
             btPatientEdit.IsEnabled = true;
             btPatientDelete.IsEnabled = true;
@@ -120,9 +121,5 @@ namespace ClinicManagement
             btVisitDelete.IsEnabled = true;
         }
 
-        private void UpdateLists()
-        {
-
-        }
     }
 }

@@ -15,6 +15,7 @@ namespace ClinicManagement.DataLayer.Model
         public DbSet<Visit> Visits{ get; set; }
 
         public static string currentConnection = string.Empty;
+        public static bool IsConnected = false;
 
         public Clinic(string connString)
         {
@@ -25,7 +26,6 @@ namespace ClinicManagement.DataLayer.Model
 
        public static Exception CreateDb(string conn)
         {
-
             try
             {
                 using (Clinic db = new Clinic(conn))
@@ -83,20 +83,22 @@ namespace ClinicManagement.DataLayer.Model
                         Date = DateTime.Now,
                         Diagnosis = Diagnoses.diagnoses[1],
                         patient = p2,
-                        Initial = false
+                        Initial = true
                     };
 
                     p1.visits.AddRange(new List<Visit>(){ v1, v2 });
                     p2.visits.Add(v1);
 
                     db.Patients.AddRange(new List<Patient>(){ p1, p2, p3 });
-                    db.Visits.AddRange(new List<Visit>(){ v1, v2 });
+                    db.Visits.AddRange(new List<Visit>(){ v1, v2, v3 });
 
                     db.SaveChanges();
 
                 
                 }
 
+                currentConnection = conn;
+                IsConnected = true;
 
                 return null;
             }
