@@ -146,5 +146,52 @@ namespace ClinicManagement.DataLayer
                 return false;
             }
         }
+
+        public static bool VisitAddOrUpdate(Visit visit)
+        {
+            if (Clinic.IsConnected)
+            {
+                using (Clinic db = new Clinic(Clinic.currentConnection))
+                {
+                    try
+                    {
+                        db.Patients.Load();
+                        db.Visits.Load();
+                        if (visit.Id == -1 && visit.patient != null)
+                        {
+                            var p = db.Patients.FirstOrDefault(x => x.Id == visit.patient.Id);
+                            visit.patient = p;
+
+                            db.Visits.Add(visit);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            var v = db.Visits.FirstOrDefault(x => x.Id == visit.Id);
+                            if (v != null && visit.patient!=null)
+                            {
+                            var p = db.Patients.FirstOrDefault(x => x.Id == visit.patient.Id);
+                                v.patient = p;
+                                db.Entry(v).CurrentValues.SetValues(visit);
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

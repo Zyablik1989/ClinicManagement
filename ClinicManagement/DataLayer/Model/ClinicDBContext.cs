@@ -86,8 +86,8 @@ namespace ClinicManagement.DataLayer.Model
                         Initial = true
                     };
 
-                    p1.visits.AddRange(new List<Visit>(){ v1, v2 });
-                    p2.visits.Add(v1);
+                    //p1.visits.AddRange(new List<Visit>(){ v1, v2 });
+                    //p2.visits.Add(v1);
 
                     db.Patients.AddRange(new List<Patient>(){ p1, p2, p3 });
                     db.Visits.AddRange(new List<Visit>(){ v1, v2, v3 });

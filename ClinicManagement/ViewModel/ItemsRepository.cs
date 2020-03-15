@@ -41,7 +41,7 @@ namespace ClinicManagement.ViewModel.Entities
                     PatientsList.Add(new PatientItem()
                     {
                         Address = patient.Address,
-                        DateOfBirth = patient.DateOfBirth.ToString("MM/dd/yyyy"),
+                        DateOfBirth = patient.DateOfBirth.ToString("dd/MM/yyyy"),
                         Gender = 
                             patient.MaleGender
                                 ? "♂"
@@ -66,8 +66,8 @@ namespace ClinicManagement.ViewModel.Entities
                     VisitsList.Add(new VisitItem()
                         {
                             Id = visit.Id,
-                            ClientId = visit.patient.Id,
-                            Date = visit.Date.ToString("MM/dd/yyyy"),
+                            PatientId = visit.patient.Id,
+                            Date = visit.Date.ToString("dd/MM/yyyy"),
                             Diagnosis = visit.Diagnosis,
                             Initial = visit.Initial,
                             Name = visit.patient.Name
@@ -97,6 +97,14 @@ namespace ClinicManagement.ViewModel.Entities
         public static void PatientAddOrUpdate(Patient patient)
         {
             if (DataManipulations.PatientAddOrUpdate(patient))
+            {
+                UpdateLists();
+            }
+        }
+
+        public static void VisitAddOrUpdate(Visit visit)
+        {
+            if (DataManipulations.VisitAddOrUpdate(visit))
             {
                 UpdateLists();
             }

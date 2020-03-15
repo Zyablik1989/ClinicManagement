@@ -26,6 +26,8 @@ namespace ClinicManagement
         public MainWindow()
         {
             InitializeComponent();
+            btConnect.FontWeight = FontWeights.ExtraBold;
+            tbConnectionStatus.FontWeight = FontWeights.ExtraBold;
             GridContainerPatients.Children.Add(PatientsGrid);
             GridContainerVisits.Children.Add(VisitsGrid);
         } 
@@ -47,12 +49,12 @@ namespace ClinicManagement
 
         private void VisitAdd(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            VisitsGrid.AddVisit();
         }
 
         private void VisitEdit(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            VisitsGrid.UpdateVisit();
         }
 
         private void VisitDelete(object sender, RoutedEventArgs e)
@@ -89,8 +91,10 @@ namespace ClinicManagement
 
                 tbConnectionStatus.Text = "An error occured";
                 btConnect.IsEnabled = true;
-            }
 
+            }
+            btConnect.FontWeight = FontWeights.Light;
+            tbConnectionStatus.FontWeight = FontWeights.Light;
             tbConnectionStatus.Text = "Connected";
 
             ItemsRepository.UpdateLists();

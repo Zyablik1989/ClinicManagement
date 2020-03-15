@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicManagement.DataLayer.Model.Entities
 {
@@ -12,6 +13,7 @@ namespace ClinicManagement.DataLayer.Model.Entities
         [Required]
         public string Diagnosis { get; set; }
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public virtual Patient patient { get; set; }
     }
 }

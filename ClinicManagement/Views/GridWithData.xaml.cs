@@ -78,5 +78,22 @@ namespace ClinicManagement.Views
                 patientEdit.ShowDialog();
             }
         }
+
+        public void AddVisit()
+        {
+            UpdateVisit updateVisit = new UpdateVisit();
+            updateVisit.ShowDialog();
+        }
+
+        public void UpdateVisit()
+        {
+
+            var visit = ListWithData.SelectedItem;
+            if (visit != null)
+            {
+                UpdateVisit updateVisit = new UpdateVisit(visit as VisitItem);
+                updateVisit.ShowDialog();
+            }
+        }
     }
 }

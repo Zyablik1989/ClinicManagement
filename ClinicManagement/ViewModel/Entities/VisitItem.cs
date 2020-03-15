@@ -12,7 +12,7 @@ namespace ClinicManagement.ViewModel.Entities
     {
 
         public int Id { get; set; }
-        public int ClientId { get; set; }
+        public int PatientId { get; set; }
         public string Date { get; set; }
         public bool Initial { get; set; }
         public string Diagnosis { get; set; }
